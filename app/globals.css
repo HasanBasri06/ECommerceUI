@@ -4,6 +4,10 @@
 
 @layer components {
   .content {
-    @apply w-content mx-auto bg-emerald-300
+    @apply w-content mx-auto
+  }
+
+  .scroll::-webkit-scrollbar {
+    @apply hidden
   }
 }

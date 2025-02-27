@@ -12,7 +12,7 @@ export default {
         foreground: "var(--foreground)",
       },
       width: {
-        content: '1280px'
+        content: '1550px'
       }
     },
   },
