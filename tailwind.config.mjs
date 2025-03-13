@@ -13,6 +13,17 @@ export default {
       },
       width: {
         content: '1550px'
+      },
+
+      backgroundColor: {
+        template: '#fff'
+      },
+
+      borderColor: {
+        card: '#eeeeee'
+      },
+      zIndex: {
+        dartkTemplateUp: '10'
       }
     },
   },
