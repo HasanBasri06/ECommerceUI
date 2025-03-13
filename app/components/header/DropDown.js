@@ -20,7 +20,7 @@ export default function DropDown({ categories }) {
                 <div className="w-44 h-auto absolute top-[50px] bg-white rounded-md border right-0 border-gray-200 p-4 shadow-lg">
                     <ul className='space-y-3 text-sm'>
                         {
-                            categories.data.map(category => <li>{category.title}</li>)
+                            categories.data.map((category, index) => <li key={index}>{category.title}</li>)
                         }
                     </ul>
                 </div>

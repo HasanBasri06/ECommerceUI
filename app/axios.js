@@ -14,9 +14,13 @@ const servers = {
     }
 }
 
-const baseURL = process.env.APP_ENV == 'development' ? servers.development.url + servers.development.parameter + servers.development.version : servers.production.url + servers.production.parameter + servers.production.version
+const baseURL = servers[process.env.APP_ENV] ?? false
+
+if (!baseURL) {
+    // TODO:
+}
 
 export const api = axios.create({
-    baseURL: baseURL,
+    baseURL: baseURL.url+baseURL.parameter+baseURL.version,
     timeout: 20000
 })

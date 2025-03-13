@@ -51,6 +51,7 @@ export default async function RootLayout({ children }) {
         className={`${nunito.className} antialiased text-gray-700 bg-template h-full`}
       >
         <Providers>
+          
           <Login />
           <Register />
           <Header />
