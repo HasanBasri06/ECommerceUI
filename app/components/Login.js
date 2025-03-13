@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from 'yup';
 import { closeLoginBox, openRegisterBox } from "../_stores/authStores";
-import { api } from "../axios";
 import DarkTemplate from "./DarkTemplate";
 
 export default function Login() {  
@@ -32,12 +31,12 @@ export default function Login() {
     }
 
     const loginForm = async (formData) => {
-        try {
-            const response = await api.post('/login', formData)
-            console.log(response);
-        } catch (error) {            
+        // try {
+        //     const response = await api.post('/login', formData)
+        //     console.log(response);
+        // } catch (error) {            
 
-        }
+        // }
     }
     
 

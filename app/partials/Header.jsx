@@ -1,15 +1,13 @@
 import Logo from '@/app/assets/images/logo.jpg';
 import { Heart, Search, ShoppingBasket } from "lucide-react";
 import Image from "next/image";
-import { api } from '../axios';
 import DropDown from '../components/header/DropDown';
-import User from '../components/header/User';
 
-async function getAllCategoriesByActive() {
-  const res = await api.get('categories')
+// async function getAllCategoriesByActive() {
+//   const res = await api.get('categories')
   
-  return res.data
-} 
+//   return res.data
+// } 
 
 
 export default async function Header() {
@@ -19,6 +17,7 @@ export default async function Header() {
     <header className='w-full z-40 sticky top-0 bg-white'>
         <div className="content h-20 bg-wite flex justify-between items-center py-4">
           <div className="text-2xl font-normal">
+            {process.env.APP_ENV}
             <Image src={Logo} width={200} height={50} alt="logo" className='h-20 object-cover' />
           </div>
           <div className="flex relative w-[500px] items-center h-full">
@@ -32,7 +31,7 @@ export default async function Header() {
             <div className="w-10 h-10 bg-slate-100 text-gray-800 cursor-pointer flex items-center justify-center rounded-full">
               <Heart size={22} />
             </div>
-            <User />
+            {/* <User /> */}
             <div className="w-10 h-10 bg-slate-100 text-gray-800 cursor-pointer flex items-center justify-center rounded-full">
               <ShoppingBasket size={22} />
             </div>

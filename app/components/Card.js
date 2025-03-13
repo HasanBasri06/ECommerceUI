@@ -2,7 +2,6 @@
 
 import { Heart, Minus, Plus, Star } from "lucide-react";
 import { useState } from "react";
-import { api } from "../axios";
 
 export default function Card() {
     const [basket, setBasket] = useState(0)
@@ -22,7 +21,6 @@ export default function Card() {
 
 
     const addBasket = async () => {
-        console.log(await api.get('/api'));
         
     }
 
