@@ -3,11 +3,13 @@ import { Heart, Search, ShoppingBasket } from "lucide-react";
 import Image from "next/image";
 import DropDown from '../components/header/DropDown';
 
-// async function getAllCategoriesByActive() {
-//   const res = await api.get('categories')
+async function getAllCategoriesByActive() {
+  // const res = await api.get('categories')
   
-//   return res.data
-// } 
+  // return res.data
+
+  return []
+} 
 
 
 export default async function Header() {
