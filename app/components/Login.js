@@ -2,15 +2,18 @@
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CircleX } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from 'yup';
-import { closeLoginBox, openRegisterBox } from "../_stores/authStores";
+import { addAuthUser, closeLoginBox, openRegisterBox } from "../_stores/authStores";
+import { api } from "../axios";
 import DarkTemplate from "./DarkTemplate";
 
 export default function Login() {  
     const login = useSelector(state => state.auth.loginBox)
     const dispatch = useDispatch()
+    const [serverValidation, setServerValidation] = useState([])
 
     const schema = yup.object().shape({
         email: yup.string().required('Email alanı boş bırakılamaz.').email('Geçerli bir email girmelisiniz.'),
@@ -31,12 +34,18 @@ export default function Login() {
     }
 
     const loginForm = async (formData) => {
-        // try {
-        //     const response = await api.post('/login', formData)
-        //     console.log(response);
-        // } catch (error) {            
-
-        // }
+        try {
+            const response = await api.post('/login', formData)
+            console.log(response);
+            
+        
+            localStorage.setItem('token', response.data.data.token)
+            dispatch(addAuthUser())
+        } catch (error) {                                    
+            console.log(error);
+            
+            // setServerValidation(error.response.data.errors)
+        }
     }
     
 
@@ -47,7 +56,15 @@ export default function Login() {
                 <h3 className="text-2xl font-bold">Giriş Yap</h3>
                 <CircleX size={20} color="red" className="cursor-pointer" onClick={() => dispatch(closeLoginBox())} />
             </div>
-           
+            { serverValidation.length > 0 && (
+                <div className="flex flex-col my-4">
+                    {
+                        serverValidation.map((validation, index) => (
+                            <span className="text-sm text-red-500" key={index}>{validation}</span>
+                        ))
+                    }
+                </div>
+            ) }
             <form onSubmit={handleSubmit(loginForm)} className="flex flex-col items-start space-y-4">
                 <div className="flex flex-col w-full mt-10 gap-2">
                     <label className="font-semibold">Email</label>

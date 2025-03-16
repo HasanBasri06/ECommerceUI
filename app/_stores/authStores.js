@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     loginBox: false,
-    registerBox: false
+    registerBox: false,
+    auth: localStorage.getItem('token') ? true : false,
+    authUser: []
 }
 
 export const authSlice = createSlice({
@@ -26,8 +28,18 @@ export const authSlice = createSlice({
         closeRegisterBox(state) {
             state.registerBox = false
         },
+
+        addAuthUser(state) {
+            state.auth = true
+            state.loginBox = false
+            state.registerBox = false;
+        },
+
+        removeAuthUser(state) {
+            state.auth = false
+        }
     }
 })
 
-export const {openLoginBox, closeLoginBox, openRegisterBox, closeRegisterBox} = authSlice.actions
+export const {openLoginBox, closeLoginBox, openRegisterBox, closeRegisterBox, addAuthUser, removeAuthUser} = authSlice.actions
 export default authSlice.reducer

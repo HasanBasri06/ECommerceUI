@@ -14,7 +14,7 @@ const servers = {
     }
 }
 
-const baseURL = servers[process.env.APP_ENV] ?? false
+const baseURL = servers[process.env.NEXT_PUBLIC_API_URL] ?? false
 
 if (!baseURL) {
     // TODO:
@@ -22,5 +22,5 @@ if (!baseURL) {
 
 export const api = axios.create({
     baseURL: baseURL.url+baseURL.parameter+baseURL.version,
-    timeout: 20000
+    timeout: 20000,
 })

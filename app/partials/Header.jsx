@@ -18,7 +18,7 @@ async function getAllCategoriesByActive() {
 
 export default async function Header() {
   const categories = await getAllCategoriesByActive()
-  
+    
   return (
     <header className='w-full z-40 sticky top-0 bg-white border-b border-b-gray-200'>
         <div className="content h-20 bg-wite flex justify-between items-center py-4">
