@@ -40,7 +40,7 @@ export default function Login() {
             dispatch(addAuthUser())
         } catch (error) {                                    
             if (error.response.data.type && error.response.data.type == 'error') {
-                setServerValidation(error.response.data.errors)
+                setServerValidation(error.response.data.errors)                
             }            
         }
     }
