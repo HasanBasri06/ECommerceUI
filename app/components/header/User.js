@@ -53,9 +53,7 @@ function authUser() {
 
 export default function User() {
   const existUser = useSelector(state => state.auth.auth)
-  console.log(existUser);
-  
-
+ 
   if (existUser) {
     return authUser()
   } 
