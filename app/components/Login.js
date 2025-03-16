@@ -35,16 +35,13 @@ export default function Login() {
 
     const loginForm = async (formData) => {
         try {
-            const response = await api.post('/login', formData)
-            console.log(response);
-            
-        
+            const response = await api.post('/login', formData)        
             localStorage.setItem('token', response.data.data.token)
             dispatch(addAuthUser())
         } catch (error) {                                    
-            console.log(error);
-            
-            // setServerValidation(error.response.data.errors)
+            if (error.response.data.type && error.response.data.type == 'error') {
+                setServerValidation(error.response.data.errors)
+            }            
         }
     }
     
